@@ -35,7 +35,7 @@ class PrototypesController < ApplicationController
   def update
     prototype = Prototype.find(params[:id])
     if prototype.update(prototype_params)
-      redirect_to root_path
+      redirect_to prototype_path
     else
       redirect_to  edit_prototype_path
     end  
