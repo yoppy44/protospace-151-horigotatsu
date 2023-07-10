@@ -20,6 +20,10 @@ class PrototypesController < ApplicationController
        render :new
     end
   end
+
+  def edit
+    @prototype = Prototype.find(params[:id])
+  end  
   
   private
   
