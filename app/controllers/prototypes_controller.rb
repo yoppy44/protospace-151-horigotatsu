@@ -1,13 +1,8 @@
 class PrototypesController < ApplicationController
 
   def index
-    
+    @prototypes = Prototype.all
   end
-
-  def message_params
-    params.require(:user).permit(:content, :image).merge(user_id: current_user.id)
-  end
-
 
   def new
     @prototype = Prototype.new
