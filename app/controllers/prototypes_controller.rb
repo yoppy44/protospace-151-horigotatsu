@@ -25,6 +25,15 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.find(params[:id])
   end  
   
+  def update
+    prototype = Prototype.find(params[:id])
+    if prototype.update(prototype_params)
+      redirect_to prototype_path
+    else
+      redirect_to  edit_prototype_path
+    end  
+  end
+
   private
   
   def prototype_params
