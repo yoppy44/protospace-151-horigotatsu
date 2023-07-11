@@ -2,6 +2,7 @@ class PrototypesController < ApplicationController
 
   def index
     @prototypes = Prototype.all
+    @user = current_user
   end
 
   def new
