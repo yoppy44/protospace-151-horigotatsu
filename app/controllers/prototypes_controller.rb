@@ -49,6 +49,16 @@ class PrototypesController < ApplicationController
     end  
   end
 
+  def destroy
+    prototype = Prototype.find(params[:id])
+    if user_signed_in? && current_user.id == prototype.user_id
+      prototype.destroy
+      redirect_to root_path
+    else
+      redirect_to new_user_session_path
+    end  
+  end  
+
   private
   
   def prototype_params
