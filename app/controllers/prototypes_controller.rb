@@ -2,6 +2,7 @@ class PrototypesController < ApplicationController
 
   def index
     @prototypes = Prototype.all
+    @user = current_user
   end
 
   def new
@@ -51,6 +52,16 @@ class PrototypesController < ApplicationController
       redirect_to  edit_prototype_path
     end  
   end
+
+  def destroy
+    prototype = Prototype.find(params[:id])
+    if user_signed_in? && current_user.id == prototype.user_id
+      prototype.destroy
+      redirect_to root_path
+    else
+      redirect_to new_user_session_path
+    end  
+  end  
 
   private
   
