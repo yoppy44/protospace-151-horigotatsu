@@ -29,6 +29,25 @@ class PrototypesController < ApplicationController
     @concept = @prototype.concept
   end
 
+  def edit
+    @prototype = Prototype.find(params[:id])
+      if user_signed_in? && current_user.id == @prototype.user_id
+        render :edit
+      elsif user_signed_in?  
+        redirect_to root_path
+      else
+        redirect_to new_user_session_path
+      end    
+  end  
+  
+  def update
+    prototype = Prototype.find(params[:id])
+    if prototype.update(prototype_params)
+      redirect_to prototype_path
+    else
+      redirect_to  edit_prototype_path
+    end  
+  end
 
   private
   
