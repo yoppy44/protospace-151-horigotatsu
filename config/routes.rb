@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root to: "prototypes#index"
-  resources :prototypes, only: [:index, :new, :create, :show, :edit, :update]
-  resources :users, only: :show
+  resources :prototypes, only: [:index, :new, :create, :show, :edit, :update] do
+    resources :comments, only: [:index, :create]
+  end
+  
+  resources :users, only: [:show, :edit, :updata]
+  
 end
+

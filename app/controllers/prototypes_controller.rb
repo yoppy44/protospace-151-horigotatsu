@@ -24,9 +24,12 @@ class PrototypesController < ApplicationController
   def show
     @prototype = Prototype.find(params[:id])
     @user = @prototype.user
+    @name = @prototype.user.name
     @title = @prototype.title
     @catch_copy = @prototype.catch_copy
     @concept = @prototype.concept
+    @comments = @prototype.comments.includes(:user)
+    @comment = Comment.new
   end
 
   def edit
