@@ -21,6 +21,14 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def show
+    @prototype = Prototype.find(params[:id])
+    @user = @prototype.user
+    @title = @prototype.title
+    @catch_copy = @prototype.catch_copy
+    @concept = @prototype.concept
+  end
+
   def edit
     @prototype = Prototype.find(params[:id])
       if user_signed_in? && current_user.id == @prototype.user_id
