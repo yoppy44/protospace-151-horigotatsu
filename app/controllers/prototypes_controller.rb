@@ -20,7 +20,16 @@ class PrototypesController < ApplicationController
        render :new
     end
   end
-  
+
+  def show
+    @prototype = Prototype.find(params[:id])
+    @user = @prototype.user
+    @title = @prototype.title
+    @catch_copy = @prototype.catch_copy
+    @concept = @prototype.concept
+  end
+
+
   private
   
   def prototype_params
