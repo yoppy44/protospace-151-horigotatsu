@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to prototype_path(@comment.prototype) # 今回の実装には関係ありませんが、このようにPrefixでパスを指定することが望ましいです。
+      redirect_to prototype_path(@comment.prototype) 
     else
       @comment.content = comment_params[:content]
       @prototype = Prototype.find(params[:prototype_id])
